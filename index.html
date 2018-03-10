@@ -1,0 +1,345 @@
+<html>
+<head>
+    <title>Tank</title>
+    <style>
+        #tank1{
+            border-style:solid;
+            width:200px;
+            height:255px;
+            left:150px;
+            border-top-left-radius: 20px;
+           border-top-right-radius:20px;
+            position: relative;
+        }
+        #water1{
+            background-color: red;
+            width:200px;
+            height:255px;
+            border-top-left-radius: 18px;
+            border-top-right-radius:18px;
+            position: relative;
+        }
+        #pipe1{
+            background-color: brown;
+            width:60px;
+            height:10px;
+            position: absolute;
+            top:259px;
+            left:362px;
+        }
+        #tap1{
+            background-color: red;
+            width:30px;
+            height:10px;
+            top:240px;
+            left:412px;
+            position: absolute;
+        }
+        #mouth1{
+            background-color: brown;
+            width:10px;
+            height:30px;
+            top:249px;
+            left:422px;
+            position: absolute;
+        }
+        #flow1{
+            width:8px;
+            height:390px;
+            top:279px;
+            left:423px;
+            position:absolute;
+        }
+		
+		  #tank2{
+            border-style:solid;
+            width:200px;
+            height:255px;
+            bottom : 260px;
+            left:575px;
+            border-top-left-radius:20px;
+           border-top-right-radius:20px;
+            position: relative;
+        }
+        #water2{
+            background-color: green;
+            width:200px;
+            height:255px;
+            border-top-left-radius: 18px;
+            border-top-right-radius:18px;
+            position: relative;
+        }
+          #pipe2{
+            background-color: brown;
+            width:60px;
+            height:10px;
+            position: absolute;
+            top:260px;
+            left:787px
+        }
+        #tap2{
+            background-color: red;
+            width:30px;
+            height:10px;
+            top:240px;
+            left:836px;
+            position: absolute;
+        }
+        #mouth2{
+            background-color: brown;
+            width:10px;
+            height:30px;
+            top:249px;
+            left:846px;
+            position: absolute;
+        }
+        #flow2{
+            width:8px;
+            height:390px;
+            top:279px;
+            left:847px;
+            position:absolute;
+        }
+        
+		  #tank3{
+            border-style:solid;
+            border-color : black;
+            width:200px;
+            height:255px;
+            bottom : 520px;
+            left:1000px;
+            border-top-left-radius:20px;
+           border-top-right-radius:20px;
+            position: relative;
+        }
+        #water3{
+            background-color: blue;
+            width:200px;
+            height:255px;
+            border-top-left-radius: 18px;
+            border-top-right-radius:18px;
+            position: relative;
+        }
+          #pipe3{
+            background-color: brown;
+            width:60px;
+            height:10px;
+            position: absolute;
+            top:261px;
+            left:950px
+        }
+        #tap3{
+            background-color: red;
+            width:30px;
+            height:10px;
+            top:240px;
+            left:940px;
+            position: absolute;
+        }
+        #mouth3{
+            background-color: brown;
+            width:10px;
+            height:30px;
+            top:249px;
+            left:950px;
+            position: absolute;
+        }
+        #flow3{
+            width:8px;
+            height:390px;
+            top:278px;
+            left:951px;
+            position:absolute;
+        }
+        #tank4{
+            border-style:solid;
+            width:600px;
+            height:300px;
+            bottom : 425px;
+            left:370px;
+            border-top : 0;
+            position: relative;
+        }
+        #water4{
+            width:600px;
+            bottom:0;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+
+<script >
+    var id1,pos1=255,pos4=0,bottom=-300,open1=false,pos5=0,pos6=0,pos7=0;
+    
+
+    function emptyTank1()
+    {
+        var element1=document.getElementById('water1'),element4=document.getElementById('water4');
+        if(pos1==0) {
+            clearInterval(id1);
+            document.getElementById('flow1').style.backgroundColor = "white";
+        }
+        else {
+            pos1--;
+            pos5++;
+            pos4+=0.2;
+            element1.style.height= pos1+'px';
+            element1.style.top= 255-pos1+'px';
+            element4.style.height=pos4+'px';
+            element4.style.bottom=bottom+pos4+'px';
+            if(pos2==255&&pos3==255)
+            document.getElementById('water4').style.backgroundColor="rgb("+255+","+0+","+0+")";
+            else
+            document.getElementById('water4').style.backgroundColor="rgb("+pos5+","+pos6+","+pos7+")";
+            if(pos1>245){
+            element1.style.borderTopLeftRadius = pos1-245+"px";
+            element1.style.borderTopRightRadius = pos1-245+"px";}
+        }
+    }
+
+    function openTap1()
+    {
+        if(open1)
+        {
+            open1=false;
+            clearInterval(id1);
+            document.getElementById('tap1').style.backgroundColor="red";
+            document.getElementById('flow1').style.backgroundColor="white";
+        }
+        else
+        {
+            open1=true;
+            document.getElementById('tap1').style.backgroundColor="green";
+            document.getElementById('flow1').style.backgroundColor="red";
+            id1=setInterval(emptyTank1,50);
+        }
+    }
+
+</script>
+<div id="a">
+<div id="tank1">
+<div id="water1">
+</div>
+</div>
+<div id="pipe1"></div>
+<div id="tap1" onclick="openTap1()"></div>
+<div id="mouth1"></div>
+<div id="flow1"></div>
+</div>
+<script >
+    var id2,pos2=255,open2=false;
+
+    function emptyTank2()
+    {
+        var element2=document.getElementById('water2'),element4=document.getElementById('water4');
+        if(pos2==0) {
+            clearInterval(id2);
+            document.getElementById('flow2').style.backgroundColor = "white";
+        }
+        else {
+            pos2--;
+            pos6++;
+             pos4+=0.2;
+            element2.style.height= pos2+'px';
+            element2.style.top= 255-pos2+'px';
+            element4.style.height=pos4+'px';
+            element4.style.bottom=bottom+pos4+'px';
+            if(pos1==255&&pos3==255)
+            document.getElementById('water4').style.backgroundColor="rgb("+0+","+255+","+0+")";
+            else
+            document.getElementById('water4').style.backgroundColor="rgb("+pos5+","+pos6+","+pos7+")";
+            if(pos2>245){
+            element2.style.borderTopLeftRadius = pos2-245+"px";
+            element2.style.borderTopRightRadius = pos2-245+"px";}
+        }
+    }
+
+    function openTap2()
+    {
+        if(open2)
+        {
+            open2=false;
+            clearInterval(id2);
+            document.getElementById('tap2').style.backgroundColor="red";
+            document.getElementById('flow2').style.backgroundColor="white";
+        }
+        else
+        {
+            open2=true;
+            document.getElementById('tap2').style.backgroundColor="green";
+            document.getElementById('flow2').style.backgroundColor="green";
+            id2=setInterval(emptyTank2,50);
+        }
+    }
+
+</script>
+<div id="tank2">
+<div id="water2">
+</div>
+</div>
+<div id="pipe2"></div>
+<div id="tap2" onclick="openTap2()"></div>
+<div id="mouth2"></div>
+<div id="flow2"></div>
+<script >
+    var id3,pos3=255,open3=false;
+
+    function emptyTank3()
+    {
+        var element3=document.getElementById('water3'),element4=document.getElementById('water4');
+        if(pos3==0) {
+            clearInterval(id3);
+            document.getElementById('flow3').style.backgroundColor = "white";
+        }
+        else {
+            pos3--;
+            pos7++;
+            pos4+=0.2;
+            element3.style.height= pos3+'px';
+            element3.style.top= 255-pos3+'px';
+            element4.style.height=pos4+'px';
+            element4.style.bottom=bottom+pos4+'px';
+            if(pos1==255&&pos2==255)
+            document.getElementById('water4').style.backgroundColor="rgb("+0+","+0+","+255+")";
+            else
+            document.getElementById('water4').style.backgroundColor="rgb("+pos5+","+pos6+","+pos7+")";
+            if(pos3>245){
+            element3.style.borderTopLeftRadius = pos3-245+"px";
+            element3.style.borderTopRightRadius = pos3-245+"px";}
+        }
+    }
+
+    function openTap3()
+    {
+        if(open3)
+        {
+            open3=false;
+            clearInterval(id3);
+            document.getElementById('tap3').style.backgroundColor="red";
+            document.getElementById('flow3').style.backgroundColor="white";
+        }
+        else
+        {
+            open3=true;
+            document.getElementById('tap3').style.backgroundColor="green";
+            document.getElementById('flow3').style.backgroundColor="blue";
+            id3=setInterval(emptyTank3,50);
+        }
+    }
+
+</script>
+<div id="tank3">
+<div id="water3">
+</div>
+</div>
+<div id="pipe3"></div>
+<div id="tap3" onclick="openTap3()"></div>
+<div id="mouth3"></div>
+<div id="flow3"></div>
+<div id="tank4">
+<div id="water4">
+</div>
+</div>	
+</body>
+</html>
